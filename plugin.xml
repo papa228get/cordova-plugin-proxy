@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-proxy" version="1.0.0" xmlns="http://apache.org/ns/plugins">
+    <name>ProxyPlugin</name>
+    <description>SOCKS5 Proxy plugin for Cordova</description>
+    <license>Apache-2.0</license>
+    <keywords>cordova,proxy,socks5,network</keywords>
+
+    <js-module src="www/proxyplugin.js" name="ProxyPlugin">
+        <clobbers target="ProxyPlugin" />
+    </js-module>
+
+    <platform name="android">
+        <!-- Add WebSocket library dependency -->
+        <framework src="org.java-websocket:Java-WebSocket:1.5.1" />
+        
+        <!-- Existing config -->
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ProxyPlugin">
+                <param name="android-package" value="com.example.cordova.plugin.proxy.ProxyPlugin"/>
+                <param name="onload" value="true"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+            <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service 
+                android:name="com.example.cordova.plugin.proxy.ProxyService"
+                android:enabled="true"
+                android:exported="false" />
+            <receiver
+                android:name="com.example.cordova.plugin.proxy.BootReceiver"
+                android:enabled="true"
+                android:exported="true">
+                <intent-filter>
+                    <action android:name="android.intent.action.BOOT_COMPLETED" />
+                </intent-filter>
+            </receiver>
+        </config-file>
+
+        <source-file src="src/android/ProxyPlugin.java" target-dir="src/com/example/cordova/plugin/proxy"/>
+        <source-file src="src/android/ProxyService.java" target-dir="src/com/example/cordova/plugin/proxy"/>
+        <source-file src="src/android/NetworkUtils.java" target-dir="src/com/example/cordova/plugin/proxy"/>
+    </platform>
+</plugin>

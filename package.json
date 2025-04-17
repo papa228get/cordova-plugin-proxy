@@ -1,0 +1,44 @@
+{
+  "name": "cordova-plugin-proxy",
+  "version": "1.0.0",
+  "description": "SOCKS5 Proxy plugin for Cordova",
+  "main": "www/proxyplugin.js",
+  "types": "./types/index.d.ts",
+  "cordova": {
+    "id": "cordova-plugin-proxy",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/cordova-plugin-proxy.git"
+  },
+  "keywords": [
+    "cordova",
+    "proxy",
+    "socks5",
+    "network",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "Your Name",
+  "license": "Apache-2.0",
+  "engines": {
+    "cordovaDependencies": {
+      "1.0.0": {
+        "cordova": ">=9.0.0",
+        "cordova-android": ">=9.0.0"
+      }
+    }
+  },
+  "dependencies": {
+    "org.java-websocket:Java-WebSocket": "1.5.1"
+  },
+  "devDependencies": {
+    "@types/cordova": "^0.0.34"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
