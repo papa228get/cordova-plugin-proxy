@@ -1,15 +1,3 @@
-cordova-plugin-proxy/
-├── src/
-│   ├── android/
-│   │   ├── ProxyPlugin.java           # для Java-кода плагина
-│   │   ├── ProxyService.java          # для кода сервиса
-│   │   └── NetworkUtils.java          # для утилит
-│   └── www/
-│       ├── proxyplugin.js             # для JS-API
-│       └── ProxyService.js            # для JS-обёртки
-├── plugin.xml                         # для описания плагина
-└── package.json                       # для зависимостей
-
 
 +------------------+         JS-API         +----------------------+
 |  Cordova App     | <--------------------> |  proxyplugin.js      |
